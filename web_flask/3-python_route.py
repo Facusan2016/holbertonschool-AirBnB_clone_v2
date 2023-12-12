@@ -28,15 +28,9 @@ if __name__ == "__main__":
         formatted_text = text.replace('_', ' ')
         return f'C {formatted_text}'
 
-    @app.route("/python/")
-    def PythonNameDefault():
-        """
-            Function to return the text variable with a C.
-        """
-        return f'Python is cool'
-
+    @app.route('/python/', defaults={'text': 'is_cool'})
     @app.route("/python/<text>")
-    def PythonName(text):
+    def PythonName(text='is cool'):
         """
             Function to return the text variable with a C.
         """
