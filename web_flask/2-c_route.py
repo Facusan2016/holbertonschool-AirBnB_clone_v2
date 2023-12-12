@@ -21,7 +21,7 @@ if __name__ == "__main__":
         return "HBNB"
 
     @app.route("/c/<text>")
-    def cName(text:str):
+    def cName(text):
         """
             Function to return the text variable with a C.
         """
