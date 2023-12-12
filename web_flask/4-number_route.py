@@ -38,14 +38,12 @@ if __name__ == "__main__":
         formatted_text = text.replace('_', ' ')
         return f'Python {formatted_text}'
 
-    @app.route("/number/<n>")
+    @app.route("/number/<int:n>")
     def routeNum(n):
         """
             Route that returns the number if it's an integer
         """
-
-        if n.isnumeric():
-            return f"{n} is a number"
+        return f"{n} is a number"
 
     app.url_map.strict_slashes = False
     app.run(host="0.0.0.0", port=5000)
