@@ -26,10 +26,9 @@ class State(BaseModel, Base):
             from models.city import City
 
             citiesArr = storage.all(City)
-            citiesFinalDict = {}
+            citiesFinalArr = []
 
-            for key, value in citiesArr.items():
+            for value in citiesArr.values():
                 if value.state_id == self.id:
-                    citiesFinalDict.update({key: value})
-            
-            return citiesFinalDict
+                    citiesFinalArr.append(value)
+            return citiesFinalArr
