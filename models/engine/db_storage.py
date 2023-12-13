@@ -15,6 +15,7 @@ host = getenv("HBNB_MYSQL_HOST")
 database = getenv("HBNB_MYSQL_DB")
 typeStorage = getenv("HBNB_TYPE_STORAGE")
 
+
 class DBStorage():
     "Declaration of DBStorage class"
     __engine = None
@@ -32,7 +33,7 @@ class DBStorage():
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        if cls == None:
+        if cls is None:
             data = self.__session.query().all()
         else:
             data = self.__session.query(cls).all()
@@ -46,11 +47,11 @@ class DBStorage():
     def new(self, obj):
         self.__session.add(obj)
 
-    def save(self): 
+    def save(self):
         self.__session.commit()
 
     def delete(self, obj=None):
-        if obj != None:
+        if obj is not None:
             self.__session.delete(obj)
 
     def reload(self):
@@ -63,3 +64,6 @@ class DBStorage():
                                )
         from sqlalchemy.orm import scoped_session
         self.__session = scoped_session(Session)
+
+    def close(self):
+        self.__session.remove()
