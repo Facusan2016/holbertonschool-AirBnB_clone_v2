@@ -13,7 +13,8 @@ if __name__ == "__main__":
 
     @app.route("/states_list")
     def listingStates():
-        data = storage.all()
+        from models.state import State
+        data = storage.all(State)
         """ 
             Function to retun "Hello HBNB!".
         """
