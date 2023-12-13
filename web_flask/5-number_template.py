@@ -51,7 +51,7 @@ if __name__ == "__main__":
             Route that returns a html if n is an integer
         """
         from flask import render_template
-        return render_template('5-number.html')
+        return render_template('5-number.html', n=n)
 
     app.url_map.strict_slashes = False
     app.run(host="0.0.0.0", port=5000)
