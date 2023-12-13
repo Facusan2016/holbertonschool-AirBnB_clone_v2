@@ -22,12 +22,13 @@ class State(BaseModel, Base):
     else:
         @property
         def cities(self):
-            from models.engine.file_storage import FileStorage
+            from models import storage
             from models.city import City
 
-            citiesArr = FileStorage.all(City)
-            citiesFinalDict = {}
+            citiesArr = storage.all(City)
+            citiesFinalArr = []
 
-            for key, value in citiesArr.items():
+            for value in citiesArr.values():
                 if value.state_id == self.id:
-                    citiesFinalDict.update({key: value})
+                    citiesFinalArr.append(value)
+            return citiesFinalArr
