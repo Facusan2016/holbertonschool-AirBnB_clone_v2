@@ -15,11 +15,12 @@ if __name__ == "__main__":
     def listingStates():
         from models.state import State
         data = storage.all(State)
-        """ 
+        """
             Function to retun "Hello HBNB!".
         """
+        sortedDict = dict(sorted(data.items(), key=lambda x: x[1].name))
         from flask import render_template
-        return render_template('7-states_list.html', data=data)
+        return render_template('7-states_list.html', data=sortedDict)
 
     app.url_map.strict_slashes = False
     app.run(host="0.0.0.0", port=5000)
